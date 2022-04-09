@@ -1,0 +1,88 @@
+/* Add application styles & imports to this file! */
+
+:root {
+  background-color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.box {
+  display: inline-block;
+  height: 5.5%;
+  width: 5.5%;
+  line-height: 40px;
+  /* border: 3px solid white; */
+  border-radius: 40% 0px 40% 0px;
+  margin: 0.3%;
+  padding: 0.2%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.dice {
+  background-color: lightslategray;
+}
+
+.limit {
+  background-color: lightslategray;
+}
+
+.result {
+  background-color: white;
+  width: 11.9%;
+  margin-left: 6.7%;
+  border-top-left-radius: 20% 40%;
+  border-bottom-right-radius: 20% 40%;
+  font-weight: bolder;
+}
+
+.roll {
+  margin-left: 6.7%;
+  background-color: blue;
+  /*   box-shadow: 10px 5px 5px black; */
+}
+
+.active .dice {
+  background-color: green;
+}
+
+.dice.active {
+  background-color: green;
+}
+
+.limit.active {
+  background-color: red;
+}
+
+.healthbar {
+  display: inline-block;
+  width: 85%;
+  vertical-align: top;
+}
+
+.healthbox {
+  display: inline-block;
+  height: 4.8%;
+  width: 4.8%;
+  line-height: 200%;
+  border: 2px solid lightslategray;
+  background-color: black;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.phys.active {
+  background-color: red;
+}
+
+.mental.active {
+  background-color: blue;
+}
+
+.handicap {
+  display: inline-block;
+  width: 10%;
+  padding: 2%;
+  vertical-align: top;
+  font-size: 3em;
+  color: white;
+}

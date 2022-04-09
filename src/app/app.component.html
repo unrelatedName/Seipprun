@@ -1,0 +1,85 @@
+<div>
+  <div>
+    <div
+      *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
+      class="box dice"
+      [class.active]="number === dice"
+    >
+      <div (click)="setDice(number)">{{ number }}</div>
+    </div>
+  </div>
+  <!-- <div>
+    <div
+      *ngFor="let number of [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]"
+      class="box dice"
+      [class.active]="number === dice"
+    >
+      <div (click)="setDice(number)">{{ number }}</div>
+    </div>
+  </div> -->
+  <div>
+    <div
+      *ngFor="
+        let number of [
+          16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+        ]
+      "
+      class="box dice"
+      [class.active]="number === dice"
+    >
+      <div (click)="setDice(number)">{{ number }}</div>
+    </div>
+  </div>
+</div>
+<div>
+  <div
+    *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+    class="box limit"
+    [class.active]="number === limit"
+  >
+    <div (click)="setLimit(number)">{{ number }}</div>
+  </div>
+  <div class="box roll" (click)="roll()">Roll</div>
+  <div
+    class="box result"
+    style="display:inline-block;"
+    [ngStyle]="{
+      color: result === 'Patzer' ? 'red' : result === 'KRIT' ? 'red' : 'green'
+    }"
+  >
+    {{ result }}
+  </div>
+  <div style="margin-top:8%;vertical-align:top;">
+    <div class="healthbar">
+      <div>
+        <div
+          *ngFor="
+            let number of [
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+            ]
+          "
+          class="healthbox phys"
+          [class.active]="number <= phys"
+          (click)="setPhys(number)"
+        >
+          &nbsp;
+        </div>
+      </div>
+      <div style="margin-top:1%">
+        <div
+          *ngFor="
+            let number of [
+              1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17
+            ]
+          "
+          class="healthbox mental"
+          [class.active]="number <= mental"
+          (click)="setMental(number)"
+        >
+          &nbsp;
+        </div>
+      </div>
+    </div>
+    <div class="handicap">{{ handicap() }}</div>
+  </div>
+</div>
