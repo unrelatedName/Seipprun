@@ -39,19 +39,27 @@
   >
     <div (click)="setLimit(number)">{{ number }}</div>
   </div>
-  <div class="box roll" (click)="roll()">Roll</div>
-  <div
-    class="box result"
-    style="display:inline-block;"
-    [ngStyle]="{
-      color: result === 'Patzer' ? 'red' : result === 'KRIT' ? 'red' : 'green'
-    }"
-  ></div>
   <div>
+    <div
+      class="counter arrow"
+      [class.count1]="timerCounter === 1 || timerCounter >= 4"
+    ></div>
+    <div
+      class="counter arrow"
+      [class.count2]="timerCounter === 2 || timerCounter >= 4"
+    ></div>
+    <div
+      class="counter arrow"
+      [class.count3]="timerCounter === 3 || timerCounter >= 4"
+    ></div>
     <button
       class="roll"
       [class.patzer]="result === 'Patzer' ? 'red' : ''"
       [class.kritpatzer]="result === 'Patzer' ? 'red' : ''"
+      (touchstart)="startTimer()"
+      (mousedown)="startTimer()"
+      (touchend)="stopTimer()"
+      (mouseup)="stopTimer()"
     >
       {{ result }}
     </button>

@@ -23,8 +23,7 @@ export class AppComponent {
     this.interval = setInterval(() => {
       this.timerCounter++;
       console.log(this.timerCounter);
-      if (this.timerCounter > 2) {
-        clearInterval(this.interval);
+      if (this.timerCounter == 4) {
         this.roll();
       }
     }, 500);

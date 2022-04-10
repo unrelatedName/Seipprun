@@ -107,14 +107,37 @@ body {
   margin-left: 5%;
 }
 
+.counter {
+  height: 10px;
+  width: 10px;
+  background-color: red;
+  display: inline-block;
+}
+
 .count1 {
-  background-color: #34ebe5;
+  /* background-color: #34ebe5; */
+  border-left: 25px solid #34ebe5 !important;
 }
 
 .count2 {
-  background-color: #34ebe5;
+  /* background-color: #34ebe5; */
+  border-left: 25px solid #34ebe5 !important;
 }
 
 .count3 {
-  background-color: #34ebe5;
+  /* background-color: #34ebe5; */
+  border-left: 25px solid #34ebe5 !important;
+}
+
+.arrow {
+  content: '';
+  position: relative;
+  background-color: transparent;
+  right: -25px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-left: 25px solid #32557f;
+  border-top: 25px solid transparent;
+  border-bottom: 25px solid transparent;
 }
