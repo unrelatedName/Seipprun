@@ -2,59 +2,70 @@ import { Component, VERSION } from '@angular/core';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.html', 
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  name = 'Angular ' + VERSION.major;
   dice = 1;
   limit = 1;
   result: string = '0';
   phys = 0;
-  mental=0;
+  mental = 0;
+  timerCounter = 0;
+  timeLeft = 60;
+  interval;
 
-  constructor(){
+  constructor() {
     this.phys = Number(localStorage.getItem('phys'));
     this.mental = Number(localStorage.getItem('mental'));
   }
-
-  setDice(dice: number) {
+  startTimer() {
+    this.interval = setInterval(() => {
+      this.timerCounter++;
+      console.log(this.timerCounter);
+      if (this.timerCounter > 2) {
+        clearInterval(this.interval);
+        this.roll();
+      }
+    }, 500);
+  }
+  stopTimer() {
+    this.timerCounter = 0;
+    clearInterval(this.interval);
+  }
+  setDice(dice) {
     this.dice = dice;
   }
-
-  setLimit(limit: number) {
+  setLimit(limit) {
     this.limit = limit;
   }
-
-  setPhys(phys: number) {
-    if(phys == this.phys ){
+  setPhys(phys) {
+    if (phys == this.phys) {
       this.phys--;
-    }else{
+    } else {
       this.phys = phys;
     }
-    localStorage.setItem('phys', this.phys+'');
+    localStorage.setItem('phys', this.phys + '');
   }
-
-  setMental(mental: number) {
-    if(mental == this.mental ){
+  setMental(mental) {
+    if (mental == this.mental) {
       this.mental--;
-    }else{
+    } else {
       this.mental = mental;
     }
-    localStorage.setItem('mental', this.mental+'');
+    localStorage.setItem('mental', this.mental + '');
   }
-
-  handicap():number{
-    return (Math.floor(this.phys/3) + Math.floor(this.mental/3)) * -1;
+  handicap() {
+    return (Math.floor(this.phys / 3) + Math.floor(this.mental / 3)) * -1;
   }
-
+  rollstart() {}
   roll() {
     let ones = 0;
     let successes = 0;
-    let pool: number[] = [];
+    let pool = [];
     for (let i = 0; i < this.dice; i++) {
       let tmpnum = this.getRandomDice();
-      //console.log(tmpnum);
+
       tmpnum == 1 ? ones++ : '';
       tmpnum > 4 ? successes++ : '';
       pool.push(tmpnum);
@@ -73,8 +84,7 @@ export class AppComponent {
         : (this.result = successes + '');
     }
   }
-
-  getRandomDice(): number {
+  getRandomDice() {
     return Math.floor(Math.random() * (7 - 1)) + 1;
   }
 }

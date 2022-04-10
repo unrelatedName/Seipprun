@@ -46,10 +46,18 @@
     [ngStyle]="{
       color: result === 'Patzer' ? 'red' : result === 'KRIT' ? 'red' : 'green'
     }"
-  >
-    {{ result }}
+  ></div>
+  <div>
+    <button
+      class="roll"
+      [class.patzer]="result === 'Patzer' ? 'red' : ''"
+      [class.kritpatzer]="result === 'Patzer' ? 'red' : ''"
+    >
+      {{ result }}
+    </button>
   </div>
-  <div style="margin-top:8%;vertical-align:top;">
+
+  <div style="margin-top:3%;vertical-align:top;">
     <div class="healthbar">
       <div>
         <div

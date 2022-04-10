@@ -1,21 +1,27 @@
-/* Add application styles & imports to this file! */
-
 :root {
   background-color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 1%;
+}
+
 .box {
   display: inline-block;
-  height: 5.5%;
-  width: 5.5%;
-  line-height: 40px;
-  /* border: 3px solid white; */
+  /*   height: 5.5%; */
+  width: 5.9%;
+  line-height: 300%;
   border-radius: 40% 0px 40% 0px;
   margin: 0.3%;
   padding: 0.2%;
   text-align: center;
   vertical-align: middle;
+  box-sizing: border-box;
 }
 
 .dice {
@@ -27,62 +33,88 @@
 }
 
 .result {
-  background-color: white;
-  width: 11.9%;
-  margin-left: 6.7%;
-  border-top-left-radius: 20% 40%;
-  border-bottom-right-radius: 20% 40%;
-  font-weight: bolder;
+  font-size: 3em;
+  color: #34ebe5;
+}
+
+.result.patzer {
+  font-size: 2em;
+  color: red;
+}
+.result.kritpatzer {
+  font-size: 2em;
+  color: red;
 }
 
 .roll {
-  margin-left: 6.7%;
-  background-color: blue;
-  /*   box-shadow: 10px 5px 5px black; */
-}
-
-.active .dice {
-  background-color: green;
+  margin: 3%;
+  margin-left: 5%;
+  width: 20%;
+  /* height:8em; */
+  line-height: 150%;
+  background-color: lightslategray;
+  color: #34ebe5;
+  font-size: 3em;
+  font-weight: bolder;
+  box-shadow: inset 0px 0px 0px 5px #34ebe5;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
 }
 
 .dice.active {
-  background-color: green;
+  color: #34ebe5;
+  box-shadow: inset 0px 0px 0px 2px #34ebe5;
 }
 
 .limit.active {
-  background-color: red;
+  color: #34ebe5;
+  box-shadow: inset 0px 0px 0px 2px #34ebe5;
 }
 
 .healthbar {
   display: inline-block;
-  width: 85%;
-  vertical-align: top;
+  width: 80%;
+  /*   vertical-align: top; */
 }
 
 .healthbox {
   display: inline-block;
-  height: 4.8%;
-  width: 4.8%;
+  width: 5.4%;
   line-height: 200%;
-  border: 2px solid lightslategray;
+  border: 1px solid lightslategray;
   background-color: black;
   text-align: center;
-  vertical-align: middle;
+  /*   vertical-align: middle; */
 }
 
 .phys.active {
-  background-color: red;
+  background-color: #ba1b18;
 }
 
 .mental.active {
-  background-color: blue;
+  background-color: #1c7ed4;
 }
 
 .handicap {
   display: inline-block;
-  width: 10%;
-  padding: 2%;
-  vertical-align: top;
+  /*   width: 10%; */
+  /*   vertical-align: top; */
   font-size: 3em;
   color: white;
+  margin-left: 5%;
+}
+
+.count1 {
+  background-color: #34ebe5;
+}
+
+.count2 {
+  background-color: #34ebe5;
+}
+
+.count3 {
+  background-color: #34ebe5;
 }
