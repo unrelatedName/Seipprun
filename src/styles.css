@@ -37,35 +37,7 @@ html {
   background-color: lightslategray;
 }
 
-.patzer {
-  font-size: 2em !important;
-  color: red !important;
-}
-.kritpatzer {
-  font-size: 2em !important;
-  color: red !important;
-}
 
-.roll {
-  border-top-left-radius: 30% 40%;
-  border-bottom-right-radius: 30% 40%;
-  margin: 3%;
-  margin-left: 9%;
-  width: 20%;
-  height:5rem;
-  /* height:8em; */
-  /* line-height: 1.5rem; */
-  background-color: lightslategray;
-  color: #34ebe5;
-  font-size: 3em;
-  font-weight: bolder;
-  box-shadow: inset 0px 0px 0px 0.2rem #34ebe5;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -o-user-select: none;
-}
 
 .dice.active {
   color: #34ebe5;
@@ -112,20 +84,11 @@ html {
   margin-left: 5%;
 }
 
-.count-right {
-  /* background-color: #34ebe5; */
-  border-left: 25px solid #34ebe5 !important;
-}
-
-.count-left {
-  /* background-color: #34ebe5; */
-  border-right: 25px solid #34ebe5 !important;
-}
-
 .rollcontainer {
   display:flex;
   flex-wrap:nowrap;
   justify-content: center;
+  align-items: center;
 }
 
 .arrow-right {
@@ -133,7 +96,7 @@ html {
   content: '';
   position: relative;
   background-color: transparent;
-  right: -25px;
+  /* right: -25rem; */
   bottom: 0;
   width: 0;
   height: 0;
@@ -147,11 +110,51 @@ html {
   content: '';
   position: relative;
   background-color: transparent;
-  right: -25px;
+  /* right: -25px; */
   bottom: 0;
   width: 0;
   height: 0;
   border-right: 25px solid #32557f;
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent;
+}
+
+.patzer {
+  font-size: 2em !important;
+  color: red !important;
+}
+.kritpatzer {
+  font-size: 2em !important;
+  color: red !important;
+}
+
+.roll {
+  border-top-left-radius: 30% 40%;
+  border-bottom-right-radius: 30% 40%;
+/*   margin: 3%;*/
+  margin: 3%; 
+  width: 20%;
+  height:5rem;
+  /* height:8em; */
+  /* line-height: 1.5rem; */
+  background-color: lightslategray;
+  color: #34ebe5;
+  font-size: 3em;
+  font-weight: bolder;
+  box-shadow: inset 0px 0px 0px 0.2rem #34ebe5;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+}
+
+.count-right {
+  /* background-color: #34ebe5; */
+  border-left: 25px solid #34ebe5 !important;
+}
+
+.count-left {
+  /* background-color: #34ebe5; */
+  border-right: 25px solid #34ebe5 !important;
 }
