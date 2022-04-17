@@ -19,6 +19,7 @@ export class AppComponent {
   constructor() {
     this.phys = Number(localStorage.getItem('phys'));
     this.mental = Number(localStorage.getItem('mental'));
+    this.calculateHandicap();
   }
   startTimer() {
     this.interval = setInterval(() => {
