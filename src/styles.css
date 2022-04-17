@@ -11,11 +11,16 @@ body {
   padding: 1%;
 }
 
+html {
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+}
+
 .box {
   display: inline-block;
   /*   height: 5.5%; */
   width: 5.9%;
-  line-height: 300%;
+  line-height: 280%;
   border-radius: 40% 0px 40% 0px;
   margin: 0.3%;
   padding: 0.2%;
@@ -37,26 +42,28 @@ body {
   color: #34ebe5;
 }
 
-.result.patzer {
-  font-size: 2em;
-  color: red;
+.patzer {
+  font-size: 2em !important;
+  color: red !important;
 }
-.result.kritpatzer {
-  font-size: 2em;
-  color: red;
+.kritpatzer {
+  font-size: 2em !important;
+  color: red !important;
 }
 
 .roll {
+  border-top-left-radius: 30% 40%;
+  border-bottom-right-radius: 30% 40%;
   margin: 3%;
   margin-left: 9%;
   width: 20%;
   /* height:8em; */
-  line-height: 150%;
+  line-height: 1.5em;
   background-color: lightslategray;
   color: #34ebe5;
   font-size: 3em;
   font-weight: bolder;
-  box-shadow: inset 0px 0px 0px 5px #34ebe5;
+  box-shadow: inset 0px 0px 0px 3px #34ebe5;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;

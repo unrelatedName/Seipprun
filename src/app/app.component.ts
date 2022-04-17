@@ -14,6 +14,7 @@ export class AppComponent {
   timerCounter = 0;
   timeLeft = 60;
   interval;
+  handicap = 0;
 
   constructor() {
     this.phys = Number(localStorage.getItem('phys'));
@@ -26,7 +27,7 @@ export class AppComponent {
       if (this.timerCounter == 4) {
         this.roll();
       }
-    }, 500);
+    }, 300);
   }
   stopTimer() {
     this.timerCounter = 0;
@@ -45,6 +46,7 @@ export class AppComponent {
       this.phys = phys;
     }
     localStorage.setItem('phys', this.phys + '');
+    this.calculateHandicap();
   }
   setMental(mental) {
     if (mental == this.mental) {
@@ -53,9 +55,12 @@ export class AppComponent {
       this.mental = mental;
     }
     localStorage.setItem('mental', this.mental + '');
+    this.calculateHandicap();
   }
-  handicap() {
-    return (Math.floor(this.phys / 3) + Math.floor(this.mental / 3)) * -1;
+
+  calculateHandicap() {
+    this.handicap =
+      (Math.floor(this.phys / 3) + Math.floor(this.mental / 3)) * -1;
   }
   rollstart() {}
   roll() {
