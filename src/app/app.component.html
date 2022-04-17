@@ -54,7 +54,7 @@
     ></div>
     <button
       class="roll"
-      [class.patzer]="result === 'Patzer'"
+      [class.patzer]="result.includes('Patzer')"
       [class.kritpatzer]="result === 'KRIT'"
       (touchstart)="startTimer()"
       (mousedown)="startTimer()"
