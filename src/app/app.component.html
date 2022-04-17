@@ -39,7 +39,7 @@
   >
     <div (click)="setLimit(number)">{{ number }}</div>
   </div>
-  <div style="padding-left:25%;padding-top:2%">
+  <div class="rollcontainer">
     <div
       class="arrow-right"
       [class.count-right]="timerCounter === 1 || timerCounter >= 4"
@@ -61,7 +61,7 @@
       (touchend)="stopTimer()"
       (mouseup)="stopTimer()"
       unselectable="on"
-      onselectstart="return false;" 
+      onselectstart="return false;"
     >
       {{ result }}
     </button>
@@ -92,7 +92,7 @@
           [class.active]="number <= phys"
           (click)="setPhys(number)"
         >
-        {{number}}
+          {{ number }}
         </div>
       </div>
       <div style="margin-top:1%">
@@ -106,7 +106,7 @@
           [class.active]="number <= mental"
           (click)="setMental(number)"
         >
-          {{number}}
+          {{ number }}
         </div>
       </div>
     </div>
