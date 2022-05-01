@@ -33,11 +33,14 @@
 </div>
 <div>
   <div
-    *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+    *ngFor="let number of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
     class="box limit"
     [class.active]="number === limit"
   >
     <div (click)="setLimit(number)">{{ number }}</div>
+  </div>
+  <div class="box limit" [class.active]="limit === 999" (click)="setLimit(999)">
+    X
   </div>
   <div class="rollcontainer">
     <div

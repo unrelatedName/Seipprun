@@ -1,6 +1,5 @@
 import { Component, VERSION } from '@angular/core';
 
-
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -12,7 +11,7 @@ export class AppComponent {
   result: string = '0';
   phys = 0;
   mental = 0;
-  timerCounter = 0;
+  timerCounter = 6;
   timeLeft = 60;
   interval;
   handicap = 0;
@@ -20,26 +19,35 @@ export class AppComponent {
   constructor() {
     this.phys = Number(localStorage.getItem('phys'));
     this.mental = Number(localStorage.getItem('mental'));
+    this.dice = Number(localStorage.getItem('dice'));
+    this.limit = Number(localStorage.getItem('limit'));
     this.calculateHandicap();
   }
   startTimer() {
+    this.result = '';
+    this.timerCounter = 0;
     this.interval = setInterval(() => {
       this.timerCounter++;
       console.log(this.timerCounter);
       if (this.timerCounter == 4) {
         this.roll();
       }
+      if (this.timerCounter > 6) {
+        clearInterval(this.interval);
+      }
     }, 300);
   }
   stopTimer() {
-    this.timerCounter = 0;
-    clearInterval(this.interval);
+    /*     this.timerCounter = 0;
+    clearInterval(this.interval); */
   }
   setDice(dice) {
     this.dice = dice;
+    localStorage.setItem('dice', this.dice + '');
   }
   setLimit(limit) {
     this.limit = limit;
+    localStorage.setItem('limit', this.limit + '');
   }
   setPhys(phys) {
     if (phys == this.phys) {
@@ -90,6 +98,7 @@ export class AppComponent {
         : (this.result = successes + '');
     }
   }
+  edgeReroll() {}
   getRandomDice() {
     return Math.floor(Math.random() * (7 - 1)) + 1;
   }
