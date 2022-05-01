@@ -15,6 +15,9 @@ export class AppComponent {
   timeLeft = 60;
   interval;
   handicap = 0;
+  successes = 0;
+  ones = 0;
+  edgeroll = false;
 
   constructor() {
     this.phys = Number(localStorage.getItem('phys'));
@@ -25,21 +28,23 @@ export class AppComponent {
   }
   startTimer() {
     this.result = '';
+    this.edgeroll = false;
     this.timerCounter = 0;
     this.interval = setInterval(() => {
       this.timerCounter++;
-      console.log(this.timerCounter);
+      /* console.log(this.timerCounter); */
       if (this.timerCounter == 4) {
         this.roll();
-      }
-      if (this.timerCounter > 6) {
         clearInterval(this.interval);
       }
-    }, 300);
+    }, 500);
   }
   stopTimer() {
     /*     this.timerCounter = 0;
     clearInterval(this.interval); */
+    /*     <!--       (mousedown)="startTimer()"
+      (touchend)="stopTimer()"
+      (mouseup)="stopTimer()" --> */
   }
   setDice(dice) {
     this.dice = dice;
@@ -74,31 +79,62 @@ export class AppComponent {
   }
   rollstart() {}
   roll() {
-    let ones = 0;
-    let successes = 0;
+    this.ones = 0;
+    this.successes = 0;
     let pool = [];
     for (let i = 0; i < this.dice; i++) {
       let tmpnum = this.getRandomDice();
 
-      tmpnum == 1 ? ones++ : '';
-      tmpnum > 4 ? successes++ : '';
+      tmpnum == 1 ? this.ones++ : '';
+      tmpnum > 4 ? this.successes++ : '';
       pool.push(tmpnum);
     }
-    console.log('Erfolge:' + successes + ' Einser:' + ones);
-    if (ones > this.dice / 2) {
-      if (successes == 0) {
+    console.log('Erfolge:' + this.successes + ' Einser:' + this.ones);
+    if (this.ones > this.dice / 2) {
+      if (this.successes == 0) {
         this.result = 'KRIT';
       } else {
-        this.result = 'Patzer(' + successes + ')';
+        this.result = 'Patzer(' + this.successes + ')';
       }
       return;
     } else {
-      successes > this.limit
+      this.successes > this.limit
         ? (this.result = this.limit + '')
-        : (this.result = successes + '');
+        : (this.result = this.successes + '');
     }
   }
-  edgeReroll() {}
+  edgeReroll() {
+    this.edgeroll = true;
+    let rerollpool = this.dice - this.successes;
+    console.log('Rerolling Dice: ' + rerollpool);
+    let pool = [];
+    let tmpsuccesses = 0;
+    let tmpones = 0;
+
+    for (let i = 0; i < rerollpool; i++) {
+      let tmpnum = this.getRandomDice();
+      tmpnum == 1 ? tmpones++ : '';
+      tmpnum > 4 ? tmpsuccesses++ : '';
+      pool.push(tmpnum);
+    }
+    console.log('Neue Erfolge:' + tmpsuccesses + 'Neue Einser:' + tmpones);
+
+    this.successes = this.successes + tmpsuccesses;
+    this.ones = this.ones + tmpones;
+
+    if (this.ones > this.dice / 2) {
+      if (this.successes == 0) {
+        this.result = 'KRIT';
+      } else {
+        this.result = 'Patzer(' + this.successes + ')';
+      }
+      return;
+    } else {
+      this.successes > this.limit
+        ? (this.result = this.limit + '')
+        : (this.result = this.successes + '');
+    }
+  }
   getRandomDice() {
     return Math.floor(Math.random() * (7 - 1)) + 1;
   }

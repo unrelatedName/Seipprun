@@ -127,8 +127,8 @@ html {
 }
 
 .roll {
-  border-top-left-radius: 30% 40%;
-  border-bottom-right-radius: 30% 40%;
+  border-top-left-radius: 20% 40%;
+  border-bottom-right-radius: 20% 40%;
   /*   margin: 3%;*/
   margin: 1%;
   width: 20%;
@@ -147,6 +147,42 @@ html {
   -o-user-select: none;
   text-align: center;
   vertical-align: middle;
+}
+.edge {
+  border-top-left-radius: 20% 40%;
+  border-bottom-right-radius: 20% 40%;
+  margin: 1%;
+  width: 10%;
+  height: 4rem;
+  margin-left: 5em;
+  background-color: lightslategray;
+  color: #34ebe5;
+  font-size: 1em;
+  /*   box-shadow: inset 0px 0px 0px 0.2rem black; */
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -o-user-select: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.edgerolled {
+  -webkit-animation: pulsate 1s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  opacity: 0.5;
+}
+@-webkit-keyframes pulsate {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }
 
 .count-right {

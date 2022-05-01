@@ -45,24 +45,25 @@
   <div class="rollcontainer">
     <div
       class="arrow-right"
+      [class.edgerolled]="edgeroll"
       [class.count-right]="timerCounter === 1 || timerCounter >= 4"
     ></div>
     <div
       class="arrow-right"
+      [class.edgerolled]="edgeroll"
       [class.count-right]="timerCounter === 2 || timerCounter >= 4"
     ></div>
     <div
       class="arrow-right"
+      [class.edgerolled]="edgeroll"
       [class.count-right]="timerCounter === 3 || timerCounter >= 4"
     ></div>
     <button
       class="roll"
       [class.patzer]="result.includes('Patzer')"
       [class.kritpatzer]="result === 'KRIT'"
-      (touchstart)="startTimer()"
-      (mousedown)="startTimer()"
-      (touchend)="stopTimer()"
-      (mouseup)="stopTimer()"
+      [class.edgerolled]="edgeroll"
+      (click)="startTimer()"
       unselectable="on"
       onselectstart="return false;"
     >
@@ -70,16 +71,28 @@
     </button>
     <div
       class="arrow-left"
+      [class.edgerolled]="edgeroll"
       [class.count-left]="timerCounter === 3 || timerCounter >= 4"
     ></div>
     <div
       class="arrow-left"
+      [class.edgerolled]="edgeroll"
       [class.count-left]="timerCounter === 2 || timerCounter >= 4"
     ></div>
     <div
       class="arrow-left"
+      [class.edgerolled]="edgeroll"
       [class.count-left]="timerCounter === 1 || timerCounter >= 4"
     ></div>
+
+    <button
+      class="edge"
+      (click)="edgeReroll()"
+      unselectable="on"
+      onselectstart="return false;"
+    >
+      EDGE
+    </button>
   </div>
 
   <div>
