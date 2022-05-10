@@ -94,7 +94,7 @@ export class AppComponent {
       if (this.successes == 0) {
         this.result = 'KRIT';
       } else {
-        this.result = 'Patzer(' + this.successes + ')';
+        this.result = 'P(' + this.successes + ')';
       }
       return;
     } else {
@@ -122,11 +122,11 @@ export class AppComponent {
     this.successes = this.successes + tmpsuccesses;
     this.ones = this.ones + tmpones;
 
-    if (this.ones > this.dice / 2) {
+    if (this.ones > (this.dice / 2)) {
       if (this.successes == 0) {
         this.result = 'KRIT';
       } else {
-        this.result = 'Patzer(' + this.successes + ')';
+        this.result = 'P(' + this.successes + ')';
       }
       return;
     } else {
