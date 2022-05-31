@@ -37,7 +37,7 @@ export class AppComponent {
         this.roll();
         clearInterval(this.interval);
       }
-    }, 500);
+    }, 200);
   }
   stopTimer() {
     /*     this.timerCounter = 0;
