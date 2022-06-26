@@ -25,6 +25,9 @@ export class AppComponent {
     this.dice = Number(localStorage.getItem('dice'));
     this.limit = Number(localStorage.getItem('limit'));
     this.calculateHandicap();
+
+    this.roll(1000, true);
+
   }
   startTimer() {
     this.result = '';
@@ -34,17 +37,10 @@ export class AppComponent {
       this.timerCounter++;
       /* console.log(this.timerCounter); */
       if (this.timerCounter == 4) {
-        this.roll();
+        this.roll(this.dice);
         clearInterval(this.interval);
       }
     }, 200);
-  }
-  stopTimer() {
-    /*     this.timerCounter = 0;
-    clearInterval(this.interval); */
-    /*     <!--       (mousedown)="startTimer()"
-      (touchend)="stopTimer()"
-      (mouseup)="stopTimer()" --> */
   }
   setDice(dice) {
     this.dice = dice;
@@ -72,25 +68,28 @@ export class AppComponent {
     localStorage.setItem('mental', this.mental + '');
     this.calculateHandicap();
   }
-
   calculateHandicap() {
     this.handicap =
       (Math.floor(this.phys / 3) + Math.floor(this.mental / 3)) * -1;
   }
-  rollstart() {}
-  roll() {
+  roll(rollingDice:number, debug?:boolean) {
     this.ones = 0;
     this.successes = 0;
     let pool = [];
-    for (let i = 0; i < this.dice; i++) {
+    let debugarray = [0,0,0,0,0,0,0];
+    for (let i = 0; i < rollingDice; i++) {
       let tmpnum = this.getRandomDice();
-
+      debugarray[tmpnum]++;
       tmpnum == 1 ? this.ones++ : '';
       tmpnum > 4 ? this.successes++ : '';
       pool.push(tmpnum);
     }
     console.log('Erfolge:' + this.successes + ' Einser:' + this.ones);
-    if (this.ones > this.dice / 2) {
+    if(debug){
+      console.log(debugarray);
+      console.log('Statistische Auswertung 1000 Würfel 1:' + debugarray[1]/10 + '% 2:' + debugarray[2]/10 + '% 3:' + debugarray[3]/10 + '% 4:' + debugarray[4]/10 + '% 5:' + debugarray[5]/10 + '% 6:' + debugarray[6]/10 + '% ')
+    }
+    if (this.ones > rollingDice / 2) {
       if (this.successes == 0) {
         this.result = 'KRIT';
       } else {
@@ -101,6 +100,11 @@ export class AppComponent {
       this.successes > this.limit
         ? (this.result = this.limit + '')
         : (this.result = this.successes + '');
+    }
+    if(debug){
+      this.result = 0+'';
+      this.successes = 0;
+      this.ones = 0;
     }
   }
   edgeReroll() {
