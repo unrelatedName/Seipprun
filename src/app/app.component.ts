@@ -18,16 +18,21 @@ export class AppComponent {
   successes = 0;
   ones = 0;
   edgeroll = false;
+  reaktion = 10;
+  iniDice = 2;
+  calculatedIni = 0;
 
   constructor() {
     this.phys = Number(localStorage.getItem('phys'));
     this.mental = Number(localStorage.getItem('mental'));
     this.dice = Number(localStorage.getItem('dice'));
     this.limit = Number(localStorage.getItem('limit'));
+    this.reaktion = Number(localStorage.getItem('reaktion'));
+    this.iniDice = Number(localStorage.getItem('iniDice'));
+    this.calculatedIni = Number(localStorage.getItem('calculatedIni'));
     this.calculateHandicap();
 
     this.roll(1000, true);
-
   }
   startTimer() {
     this.result = '';
@@ -72,11 +77,11 @@ export class AppComponent {
     this.handicap =
       (Math.floor(this.phys / 3) + Math.floor(this.mental / 3)) * -1;
   }
-  roll(rollingDice:number, debug?:boolean) {
+  roll(rollingDice: number, debug?: boolean) {
     this.ones = 0;
     this.successes = 0;
     let pool = [];
-    let debugarray = [0,0,0,0,0,0,0];
+    let debugarray = [0, 0, 0, 0, 0, 0, 0];
     for (let i = 0; i < rollingDice; i++) {
       let tmpnum = this.getRandomDice();
       debugarray[tmpnum]++;
@@ -85,9 +90,23 @@ export class AppComponent {
       pool.push(tmpnum);
     }
     console.log('Erfolge:' + this.successes + ' Einser:' + this.ones);
-    if(debug){
+    if (debug) {
       console.log(debugarray);
-      console.log('Statistische Auswertung 1000 Würfel 1:' + debugarray[1]/10 + '% 2:' + debugarray[2]/10 + '% 3:' + debugarray[3]/10 + '% 4:' + debugarray[4]/10 + '% 5:' + debugarray[5]/10 + '% 6:' + debugarray[6]/10 + '% ')
+      console.log(
+        'Statistische Auswertung 1000 Würfel 1:' +
+          debugarray[1] / 10 +
+          '% 2:' +
+          debugarray[2] / 10 +
+          '% 3:' +
+          debugarray[3] / 10 +
+          '% 4:' +
+          debugarray[4] / 10 +
+          '% 5:' +
+          debugarray[5] / 10 +
+          '% 6:' +
+          debugarray[6] / 10 +
+          '% '
+      );
     }
     if (this.ones > rollingDice / 2) {
       if (this.successes == 0) {
@@ -101,8 +120,8 @@ export class AppComponent {
         ? (this.result = this.limit + '')
         : (this.result = this.successes + '');
     }
-    if(debug){
-      this.result = 0+'';
+    if (debug) {
+      this.result = 0 + '';
       this.successes = 0;
       this.ones = 0;
     }
@@ -141,5 +160,21 @@ export class AppComponent {
   }
   getRandomDice() {
     return Math.floor(Math.random() * (7 - 1)) + 1;
+  }
+
+  saveReaktionIniDiceToStorage() {
+    this.calculatedIni = 0;
+    localStorage.setItem('reaktion', this.reaktion + '');
+    localStorage.setItem('iniDice', this.iniDice + '');
+    localStorage.setItem('calculatedIni', this.calculatedIni + '');
+  }
+
+  rollIni() {
+    let result = this.reaktion;
+    for (let i = 0; i < this.iniDice; i++) {
+      result += this.getRandomDice();
+    }
+    this.calculatedIni = result;
+    localStorage.setItem('calculatedIni', this.calculatedIni + '');
   }
 }

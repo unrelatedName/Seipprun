@@ -96,7 +96,8 @@
           [class.edgerolled]="edgeroll"
           [class.count-left]="timerCounter === 1 || timerCounter >= 4"
         ></div>
-
+      </div>
+      <div class="rollcontainer">
         <button
           class="edge"
           (click)="edgeReroll()"
@@ -107,7 +108,7 @@
         </button>
       </div>
 
-      <div>
+      <div style="margin-top:2em;white-space:nowrap">
         <div class="healthbar">
           <div>
             <div
@@ -138,7 +139,60 @@
             </div>
           </div>
         </div>
-        <div class="handicap">{{ handicap }}</div>
+        <div class="handicap notclickable">{{ handicap }}</div>
+      </div>
+    </div>
+    <div style="margin-top:2em; white-space:nowrap;">
+      <div
+        style="display:inline-block;width:3.5em;vertical-align: top;white-space:nowrap;"
+      >
+        <div class="iniUeberschrift notclickable">Reaktion</div>
+        <div class="handicap notclickable">{{ reaktion }}</div>
+      </div>
+      <div style="display:inline-block;vertical-align: bottom;">
+        <div
+          class="plusminus clickable"
+          (click)="reaktion = reaktion + 1; saveReaktionIniDiceToStorage()"
+        >
+          +
+        </div>
+        <div
+          class="plusminus clickable"
+          (click)="reaktion = reaktion - 1; saveReaktionIniDiceToStorage()"
+        >
+          -
+        </div>
+      </div>
+      <div style="display:inline-block;vertical-align: bottom;">
+        <div class="plusminusLarge notclickable">+</div>
+      </div>
+      <div
+        style="display:inline-block;width:2em;vertical-align: top; white-space:nowrap;"
+      >
+        <div class="iniUeberschrift notclickable">Ini W6</div>
+        <div class="handicap notclickable">{{ iniDice }}</div>
+      </div>
+      <div style="display:inline-block;vertical-align: bottom;">
+        <div
+          class="plusminus clickable"
+          (click)="iniDice = iniDice + 1; saveReaktionIniDiceToStorage()"
+        >
+          +
+        </div>
+        <div
+          class="plusminus clickable"
+          (click)="iniDice = iniDice - 1; saveReaktionIniDiceToStorage()"
+        >
+          -
+        </div>
+      </div>
+      <div style="display:inline-block;vertical-align: bottom;">
+        <div class="plusminusLarge notclickable">=</div>
+      </div>
+      <div style="display:inline-block;vertical-align: bottom;">
+        <div class="handicap clickable" (click)="rollIni()">
+          {{ calculatedIni }}
+        </div>
       </div>
     </div>
   </div>
