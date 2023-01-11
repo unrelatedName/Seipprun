@@ -30,6 +30,8 @@ export class AppComponent {
     this.reaktion = Number(localStorage.getItem('reaktion'));
     this.iniDice = Number(localStorage.getItem('iniDice'));
     this.calculatedIni = Number(localStorage.getItem('calculatedIni'));
+
+    if(!this.limit){this.limit=999}
     this.calculateHandicap();
 
     this.roll(1000, true);
